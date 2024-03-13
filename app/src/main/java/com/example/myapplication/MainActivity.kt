@@ -2,10 +2,8 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         fun adicionarValorView(value: String) {
             if (textView.text.toString().equals("0")) {
-                if (value == "/" || value.equals("*") || value.equals("+") || value.equals("-")) {
+                if (value == "/" || value == "*" || value == "+" || value == "-") {
                     return
                 } else {
                     textView.text = value
@@ -42,88 +40,88 @@ class MainActivity : AppCompatActivity() {
                 textView.append(value)
             }
         }
-        fun verificarExpressao(value : String) {
+        fun verificarExpressao(value: String) {
             if (!textView.text.toString().contains("-") && !textView.text.toString().contains("+") && !textView.text.toString().contains("/") && !textView.text.toString().contains("*")) {
                 adicionarValorView(value)
             }
         }
-        fun calcular(expressao : String) {
+        fun calcular(expressao: String) {
             if (expressao.contains("+")) {
                 val partes = expressao.split("+")
                 val valor1 =  partes[0]
                 val valor2 = partes[1]
                 val resultado = valor1.toInt() + valor2.toInt()
-                textView.setText(resultado.toString())
+                textView.text = resultado.toString()
             }
             if (expressao.contains("-")) {
                 val partes = expressao.split("-")
                 val valor1 =  partes[0]
                 val valor2 = partes[1]
                 val resultado = valor1.toInt() - valor2.toInt()
-                textView.setText(resultado.toString())
+                textView.text = resultado.toString()
             }
             if (expressao.contains("/")) {
                 val partes = expressao.split("/")
                 val valor1 =  partes[0]
                 val valor2 = partes[1]
                 val resultado = valor1.toFloat() / valor2.toFloat()
-                textView.setText(resultado.toString())
+                textView.text = resultado.toString()
             }
             if (expressao.contains("*")) {
                 val partes = expressao.split("*")
                 val valor1 =  partes[0]
                 val valor2 = partes[1]
                 val resultado = valor1.toInt() * valor2.toInt()
-                textView.setText(resultado.toString())
+                textView.text = resultado.toString()
             }
         }
 
-        button0.setOnClickListener() {
+        button0.setOnClickListener {
             adicionarValorView("0")
         }
-        button1.setOnClickListener() {
+        button1.setOnClickListener {
             adicionarValorView("1")
         }
-        button2.setOnClickListener() {
+        button2.setOnClickListener {
             adicionarValorView("2")
         }
-        button3.setOnClickListener() {
+        button3.setOnClickListener {
             adicionarValorView("3")
         }
-        button4.setOnClickListener() {
+        button4.setOnClickListener {
             adicionarValorView("4")
         }
-        button5.setOnClickListener() {
+        button5.setOnClickListener {
             adicionarValorView("5")
         }
-        button6.setOnClickListener() {
+        button6.setOnClickListener {
             adicionarValorView("6")
         }
-        button7.setOnClickListener() {
+        button7.setOnClickListener {
             adicionarValorView("7")
         }
-        button8.setOnClickListener() {
+        button8.setOnClickListener {
             adicionarValorView("8")
         }
-        button9.setOnClickListener() {
+        button9.setOnClickListener {
             adicionarValorView("9")
         }
-        buttonDividir.setOnClickListener() {
+        buttonDividir.setOnClickListener {
             verificarExpressao("/")
         }
-        buttonMulti.setOnClickListener() {
+        buttonMulti.setOnClickListener {
             verificarExpressao("*")
         }
-        buttonAdd.setOnClickListener() {
+        buttonAdd.setOnClickListener {
             verificarExpressao("+")
         }
-        buttonLess.setOnClickListener() {
+        buttonLess.setOnClickListener {
             verificarExpressao("-")
         }
-        buttonClean.setOnClickListener() {
-            textView.setText("0")
+        buttonClean.setOnClickListener {
+            textView.text = "0"
         }
-        buttonEqual.setOnClickListener() {
+        buttonEqual.setOnClickListener {
             calcular(textView.text.toString())
         }
 
